@@ -32,8 +32,10 @@ const resolvers = {
 	},
 
 	Mutation: {
-		addPost: (title) => {
+		addPost: (_, { title }) => {
 			posts.push({ title, id: posts.length + 1 });
+
+			return posts[posts.slice(-1)[0]];
 		},
 	},
 };
