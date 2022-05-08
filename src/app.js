@@ -20,11 +20,21 @@ const typeDefs = gql`
 	type Query {
 		posts: [Post]
 	}
+
+	type Mutation {
+		addPost(title: String!): Post
+	}
 `;
 
 const resolvers = {
 	Query: {
 		posts: () => posts,
+	},
+
+	Mutation: {
+		addPost: (title) => {
+			posts.push({ title, id: posts.length + 1 });
+		},
 	},
 };
 
